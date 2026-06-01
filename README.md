@@ -1,66 +1,192 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# SecureBlog
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+SecureBlog adalah aplikasi web blog artikel yang dibangun dengan Laravel 12, dilengkapi sistem autentikasi, manajemen artikel oleh admin, dan fitur keamanan web modern.
 
-## About Laravel
+---
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Fitur Utama
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- Membaca artikel tanpa perlu login
+- Registrasi dan login pengguna dengan verifikasi email
+- Manajemen artikel (tambah, edit, hapus) khusus admin
+- Upload thumbnail artikel
+- Reset password via email
+- Profil pengguna (ubah nama, email, password, hapus akun)
+- Integrasi email menggunakan Mailtrap
+- Fitur "Gabung Jadi Penulis" via WhatsApp
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+---
 
-## Learning Laravel
+## Teknologi yang Digunakan
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+| Teknologi | Keterangan |
+|-----------|------------|
+| Laravel 12 | Framework PHP utama |
+| Laravel Breeze | Starter kit autentikasi |
+| Alpine.js | Interaktivitas UI ringan |
+| Mailtrap | Testing pengiriman email |
+| MySQL | Database |
+| Vite | Asset bundler |
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+---
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Persyaratan Sistem
 
-## Laravel Sponsors
+- PHP >= 8.2
+- Composer
+- Node.js & NPM
+- MySQL
+- Git
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+---
 
-### Premium Partners
+## Cara Instalasi
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+### 1. Clone repository
 
-## Contributing
+```bash
+git clone https://github.com/username/secureblog.git
+cd secureblog
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### 2. Install dependencies PHP
 
-## Code of Conduct
+```bash
+composer install
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### 3. Install dependencies JavaScript
 
-## Security Vulnerabilities
+```bash
+npm install
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+### 4. Salin file environment
 
-## License
+```bash
+cp .env.example .env
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+### 5. Generate application key
+
+```bash
+php artisan key:generate
+```
+
+### 6. Konfigurasi database
+
+Buka file `.env` dan sesuaikan:
+
+```env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=secureblog
+DB_USERNAME=root
+DB_PASSWORD=
+```
+
+### 7. Konfigurasi email (Mailtrap)
+
+```env
+MAIL_MAILER=smtp
+MAIL_HOST=sandbox.smtp.mailtrap.io
+MAIL_PORT=2525
+MAIL_USERNAME=isi_username_mailtrap
+MAIL_PASSWORD=isi_password_mailtrap
+MAIL_ENCRYPTION=tls
+MAIL_FROM_ADDRESS="no-reply@secureblog.com"
+MAIL_FROM_NAME="${APP_NAME}"
+```
+
+### 8. Jalankan migrasi database
+
+```bash
+php artisan migrate
+```
+
+### 9. Jalankan aplikasi
+
+```bash
+php artisan serve
+```
+
+```bash
+npm run dev
+```
+
+Akses aplikasi di `http://localhost:8000`
+
+---
+
+## Struktur Role Pengguna
+
+| Role | Hak Akses |
+|------|-----------|
+| Guest | Membaca artikel |
+| User | Membaca artikel, kelola profil |
+| Admin | Semua akses + tulis, edit, hapus artikel |
+
+Untuk membuat akun admin, ubah kolom `role` di tabel `users` menjadi `admin` secara manual via database atau seeder.
+
+---
+
+## Keamanan — OWASP ASVS
+
+Aplikasi ini dibangun dengan mengacu pada standar **OWASP Application Security Verification Standard (ASVS)**. Berikut daftar kontrol keamanan yang diterapkan:
+
+| Kode | Kategori | Deskripsi | Implementasi |
+|------|----------|-----------|--------------|
+| V2.1.1 | Autentikasi | Password minimum length & rules | Validasi `min:8` pada form register & ganti password via Laravel Breeze |
+| V2.1.7 | Autentikasi | Breached password check | Laravel Breeze menggunakan `Password::defaults()` yang dapat dikonfigurasi dengan `uncompromised()` |
+| V3.1.1 | Session | Session regenerate setelah login | Laravel memanggil `session()->regenerate()` otomatis setelah login berhasil |
+| V3.4.1 | Session | Cookie Secure + HttpOnly | Dikonfigurasi via `config/session.php` — `http_only: true`, `secure: true` di environment production |
+| V4.1.1 | Akses Kontrol | Role-based access control (admin/user) | Middleware `is_admin` melindungi semua route admin, role disimpan di kolom `role` pada tabel `users` |
+| V5.1.1 | Validasi | Server-side input validation | Semua input divalidasi di controller menggunakan `$request->validate()` sebelum diproses |
+| V5.2.1 | Output | Output encoding / XSS prevention | Semua output menggunakan `{{ }}` yang otomatis melakukan HTML escaping, konten artikel menggunakan `nl2br(e($article->content))` |
+| V5.3.4 | Injeksi | SQL Injection prevention | Seluruh query database menggunakan Eloquent ORM dengan prepared statements secara otomatis |
+| V8.1.1 | Error Handling | Tidak membocorkan data sensitif | Mode `APP_DEBUG=false` di production, error ditangani tanpa menampilkan stack trace ke pengguna |
+| V12.1.1 | File Upload | Validasi & penyimpanan file aman | Upload thumbnail divalidasi tipe (`image/jpg,jpeg,png,webp`) dan ukuran (`max:2048`), disimpan via `Storage::disk('public')` |
+
+---
+
+## Struktur Direktori Utama
+
+```
+secureblog/
+├── app/
+│   ├── Http/Controllers/
+│   │   ├── ArticleController.php
+│   │   └── ProfileController.php
+│   └── Models/
+│       ├── User.php
+│       └── Article.php
+├── resources/views/
+│   ├── layouts/
+│   │   ├── app.blade.php
+│   │   ├── guest.blade.php
+│   │   └── navigation.blade.php
+│   ├── articles/
+│   │   ├── index.blade.php
+│   │   ├── show.blade.php
+│   │   ├── create.blade.php
+│   │   └── edit.blade.php
+│   ├── profile/
+│   └── auth/
+├── routes/
+│   ├── web.php
+│   └── auth.php
+└── database/migrations/
+```
+
+---
+
+## Dibuat Oleh
+
+**Jovan**  
+Tugas Kuliah — Pemrograman Web  
+Framework: Laravel 12
+
+---
+
+> SecureBlog dibuat sebagai implementasi nyata konsep keamanan web dalam sebuah aplikasi blog modern.
