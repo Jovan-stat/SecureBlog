@@ -184,7 +184,7 @@ secureblog/
 ## Dibuat Oleh
 
 **Jovan**  
-Tugas Kuliah — Pemrograman Web  
+Tugas Kuliah — Keamanan Sistem Informasi
 Framework: Laravel 12
 
 ---
